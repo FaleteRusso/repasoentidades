@@ -12,4 +12,9 @@ public interface ISocioServicio {
     Socio modificar(Socio s1);
     void eliminar(String dni);
 
+//    List<Socio> obtenerSociosAlpedrete();
+//
+//    List<Socio> obtenerSociosOrdenadosNombre();
+//    List<Object[]> obtenerSociosAgrupadoPorDireccion();
+
 }

@@ -12,26 +12,45 @@ public class SocioServicioImpl  implements ISocioServicio{
     private ISocioRepo repo;
     @Override
     public List<Socio> mostrarTodos() {
+
         return repo.findAll();
     }
 
     @Override
     public Socio mostrarUno(String dni) {
+
         return repo.findById(dni).orElse(new Socio());
     }
 
     @Override
     public Socio insertar(Socio s1) {
-        return null;
+        return repo.save(s1);
     }
 
     @Override
     public Socio modificar(Socio s1) {
-        return null;
+
+        return repo.save(s1);
     }
 
     @Override
     public void eliminar(String dni) {
+        repo.deleteById(dni);
 
     }
+
+//    @Override
+//    public List<Socio> obtenerSociosAlpedrete() {
+//        return repo.obtenerSociosAlpedrete();
+//    }
+//
+//    @Override
+//    public List<Socio> obtenerSociosOrdenadosNombre() {
+//        return repo.obtenerSociosOrdenadosNombre();
+//    }
+//
+//    @Override
+//    public List<Object[]> obtenerSociosAgrupadoPorDireccion() {
+//        return repo.obtenerSociosAgrupadosPorDireccion();
+//    }
 }

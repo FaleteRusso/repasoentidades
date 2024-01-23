@@ -1,16 +1,14 @@
 package com.corenetworks.repasoentidades.modelo;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 @Entity
 @Table(name = "patrones")
 public class Patron {
@@ -21,4 +19,27 @@ public class Patron {
     private String nombre;
     @Column(length = 120, nullable = false)
     private String direccion;
+
+    @OneToMany(mappedBy = "patron", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Salida> s1;
+
+    public Patron(String DNI, String nombre, String direccion) {
+        this.DNI = DNI;
+        this.nombre = nombre;
+        this.direccion = direccion;
+    }
+
+    public void setS1(List<Salida> s1) {
+        this.s1 = s1;
+    }
+
+    @Override
+    public String toString() {
+        return "Patron{" +
+                "DNI='" + DNI + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", s1=" + s1 +
+                '}';
+    }
 }
